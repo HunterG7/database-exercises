@@ -1,6 +1,18 @@
 USE bigfoot_test_db;
 
-DESCRIBE albums;
+TRUNCATE albums;
+
+DROP TABLE IF EXISTS albums;
+
+CREATE TABLE albums (
+                        id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+                        artist VARCHAR(100) NOT NULL,
+                        song_name VARCHAR(100) NOT NULL,
+                        release_date INT UNSIGNED NOT NULL,
+                        sales DOUBLE UNSIGNED NOT NULL,
+                        genre VARCHAR(255) NOT NULL,
+                        PRIMARY KEY (id)
+);
 
 INSERT INTO albums (artist, song_name, release_date, sales, genre) VALUES
 ('AC/DC','Back in Black','1980','30.1','Hard rock'),
@@ -32,3 +44,10 @@ INSERT INTO albums (artist, song_name, release_date, sales, genre) VALUES
 ('The Beatles', 'Sgt. Pepper''s Lonely Hearts Club Band', 1967, 18.3 ,'Rock'),
 ('Michael Jackson', 'Dangerous', 1991, 17.0, 'New jack swing'),
 ('The Beatles', 'Abbey Road', 1969, 16.9, 'Rock');
+
+SELECT * FROM albums;
+SELECT * FROM albums WHERE artist = 'Pink Floyd';
+SELECT * FROM albums WHERE song_name = 'Sgt. Peppers''s Lonely Hearts Club Band';
+SELECT * FROM albums WHERE release_date BETWEEN 1990 AND 1999;
+SELECT * FROM albums WHERE sales < 20;
+SELECT * FROM albums WHERE genre = 'Rock';
